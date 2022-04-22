@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개발관리-과정추가-과정및사업매칭</title>
+    <title>총괄 – 사업별(1/3)</title>
     <!-- Start css -->
     <link rel="stylesheet" type="text/css" href="../asset/css/common.css">
     <link rel="stylesheet" type="text/css" href="../asset/css/main.css">
@@ -17,305 +17,7 @@
             margin-bottom: 0;
             line-height: 18px;
         }
-        .proccess-color-1{
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: green;
-            border:1px solid green;
-            border-radius: 10px;
-        }
-        .proccess-color-2{
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: blue;
-            border: 1px solid blue;
-            border-radius: 10px;
-        }
-        .proccess-color-3{
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: orange;
-            border: 1px solid orange;
-            border-radius: 10px;
-        }
-        .proccess-color-4{
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: red;
-            border: 1px solid red;
-            border-radius: 10px;
-        }
-        .proccess-color-5{
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border: 1px solid rgb(190, 190, 190);
-            border-radius: 10px;
-        }
     </style>
-    <!-- rMateGridH5 CSS -->
-	<link rel="stylesheet" type="text/css" href="../asset/js/rMateGridH5/Assets/rMateH5.css" />
-	<!-- rMateGridH5 라이센스 -->
-	<script type="text/javascript" src="../asset/js/LicenseKey/rMateGridH5License.js"></script>
-	<!-- rMateGridH5 라이브러리 -->
-	<script type="text/javascript" src="../asset/js/rMateGridH5/JS/rMateGridH5.js"></script>
-    <!-- 샘플 작동을 위한 css와 js -->
-    <script type="text/javascript" src="./Web/JS/util.js"></script>
-    <link rel="stylesheet" type="text/css" href="./Web/rMateGridH5Sample.css" />
-    <script type="text/javascript">
-		// ----------------------- 그리드 설정 시작 -------------------------------------
-
-		// rMateGridH5에서 그리드 생성 준비가 완료될 경우 호출할 함수를 지정합니다.
-		var jsVars = "rMateOnLoadCallFunction=gridReadyHandler";
-
-		// rMateDataGrid 를 생성합니다.
-		// 파라메터 (순서대로)
-		//  1. 그리드의 id ( 임의로 지정하십시오. )
-		//  2. 그리드가 위치할 div 의 id (즉, 그리드의 부모 div 의 id 입니다.)
-		//  3. 그리드 생성 시 필요한 환경 변수들의 묶음인 jsVars
-		//  4. 그리드의 가로 사이즈 (생략 가능, 생략 시 100%)
-		//  5. 그리드의 세로 사이즈 (생략 가능, 생략 시 100%)
-		rMateGridH5.create("grid1", "gridHolder", jsVars, "100%", "100%");
-
-		// 그리드의 속성인 rMateOnLoadCallFunction 으로 설정된 함수.
-		// rMate 그리드의 준비가 완료된 경우 이 함수가 호출됩니다.
-		// 이 함수를 통해 그리드에 레이아웃과 데이터를 삽입합니다.
-		// 파라메터 : id - rMateGridH5.create() 사용 시 사용자가 지정한 id 입니다.
-		function gridReadyHandler(id) {
-			// rMateGrid 관련 객체
-			gridApp = document.getElementById(id);	// 그리드를 포함하는 div 객체
-			gridRoot = gridApp.getRoot();	// 데이터와 그리드를 포함하는 객체
-
-			gridApp.setLayout(layoutStr);
-			gridApp.setData(gridData);
-
-			var dataCompleteHandler = function (event) {
-				dataGrid = gridRoot.getDataGrid();
-			}
-			gridRoot.addEventListener("dataComplete", dataCompleteHandler);
-		}
-		var gridApp, gridRoot, dataGrid;
-
-		//----------------------- 그리드 설정 끝 -----------------------
-
-		var layoutStr =
-        '<rMateGrid>\
-	<PercentFormatter id="percfmt" useThousandsSeparator="true"/>\
-	<DataGrid id="dg1"  styleName="gridStyle" horizontalScrollPolicy="off" variableRowHeight="true" verticalAlign="middle">\
-		<groupedColumns>\
-            <DataGridColumn headerText="회차" itemRenderer="IndexNoItem" textAlign="center" width="70"/>\
-			<DataGridColumn id="dg1col1" dataField="상태" textAlign="center"/>\
-			<DataGridColumn id="dg1col2" dataField="진행율" textAlign="center"/>\
-			<DataGridColumn dataField="원고" textAlign="center"/>\
-			<DataGridColumnGroup headerText="SB">\
-					<DataGridColumn id="dg1col7" dataField="제출" textAlign="right" headerText="New York"/>\
-					<DataGridColumn id="dg1col8" dataField="검수" textAlign="right" headerText="L.A."/>\
-					<DataGridColumn id="dg1col9" dataField="수정반영" textAlign="right"/>\
-					<DataGridColumn id="dg1col9" dataField="확정" textAlign="right"/>\
-			</DataGridColumnGroup>\
-			<DataGridColumn dataField="촬영" textAlign="center"/>\
-			<DataGridColumnGroup headerText="개발물">\
-				<DataGridColumn id="dg1col10" dataField="제출" textAlign="right"/>\
-				<DataGridColumn id="dg1col11" dataField="검수" textAlign="right" formatter="{percfmt}"/>\
-				<DataGridColumn id="dg1col11" dataField="수정반영" textAlign="right" formatter="{percfmt}"/>\
-				<DataGridColumn id="dg1col11" dataField="확정" textAlign="right" formatter="{percfmt}"/>\
-			</DataGridColumnGroup>\
-            <DataGridColumnGroup headerText="강의노트">\
-				<DataGridColumn id="dg1col10" dataField="제출" textAlign="right"/>\
-				<DataGridColumn id="dg1col11" dataField="검수" textAlign="right" formatter="{percfmt}"/>\
-				<DataGridColumn id="dg1col11" dataField="확정" textAlign="right" formatter="{percfmt}"/>\
-			</DataGridColumnGroup>\
-		</groupedColumns>\
-		<dataProvider>\
-			<!-- 그리드의 자료를 일반 dataProvider가 아닌 별도의 컴포넌트에 입력해야 할 경우 아래와 같이 source에 $gridData를 넣어줍니다 -->\
-			<SpanArrayCollection extractable="false" source="{$gridData}"/>\
-		</dataProvider>\
-	</DataGrid>\
-    <Style>\
-		.gridStyle {\
-			borderTopColor:#30619C;\
-			headerBorderTopColor:#30619C;\
-            headerColors:#F9F9FB,#F9F9FB;\
-		}\
-    </Style>\
-</rMateGrid>\
-';
-
-
-		var gridData = [
-			{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			},{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			},{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			},{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			},{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			}
-            ,{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			}
-            ,{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			}
-            ,{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			}
-            ,{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			}
-            ,{
-				"상태": "",
-				"진행율": "100%",
-				"원고": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"촬영": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"수정반영": "100.0%",
-				"확정": "100.0%",
-				"제출": "100.0%",
-				"검수": "100.0%",
-				"확정": "100.0%",
-			}
-		];
-
-	</script>
 </head>
 
 <body>
@@ -424,8 +126,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a
-                                            href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/bbs/bbsPstMgnt.do?p_bbs_id=1','2963','Y')">
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/bbs/bbsPstMgnt.do?p_bbs_id=1','2963','Y')">
                                             일반 공지사항</a>
                                         <ul class="fourDepth">
                                         </ul>
@@ -1033,367 +734,228 @@
             </div>
             <div id="main">
                 <div class="contentsWrap">
-                    <ul class="tab main_tab">
-                        <li id="" class="active">
-                            <a href="javascript:goTab('03','crs');">전체 공정율
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">콘텐츠 정보
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">사업정보
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">교수설계 관리
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">강의계획서
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">콘텐츠구성
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">내용전문가
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">프로토 타입
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">양산콘텐츠
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">통합 검수
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">최종 포팅
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">공공 콘텐츠 심사
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
-                        <li id="" class="">
-                            <a href="javascript:goTab('02','crs');">버전관리
-                                <img src="../asset/img/cencel_tab.png">
-                            </a>
-                        </li>
 
+                    <ul class="tab main_tab">
+
+                        <li id="tabMenu03" class="active"><a href="javascript:goTab('03','crs');">Active Tab<img
+                                    src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img
+                                    src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img
+                                    src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img
+                                    src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img
+                                    src="../asset/img/cencel_tab.png"></a></li>
                         <div class="tab_button tx-right">
-                            <a href="#" class="tab_cencel">
-                                <img src="../asset/img/tab_cencel.png">
-                            </a>
-                            <a href="#" class="tab_hiding">
-                                <img src="../asset/img/tab_hiding.png">
-                            </a>
+                            <a href="#" class="tab_cencel"><img src="../asset/img/tab_cencel.png"></a>
+                            <a href="#" class="tab_hiding"><img src="../asset/img/tab_hiding.png"></a>
                         </div>
 
                     </ul>
+
                     <div class="contentsInner">
-                        <div class="allbutton subtit_btn cf">
-							<div class="headingBox subBox tx-left">
-								<h4 id="btn01"><i></i>총괄</h4>
-							</div>
-							<div class="btnArea tx-right subbtn">
-								<button type="button" class="btnBasic btnicon"><img src="../asset/img/excel.png" class="excel"></button>
-							</div>
-						</div>
-                        <table class="table_normal mt0" style="margin-bottom: 15px;">
-                            <colgroup>
-                                <col>
-                                <col width="11%">
-                                <col width="11%">
-                                <col width="11%">
-                                <col width="11%">
-                                <col width="11%">
-                                <col width="11%">
-                                <col width="11%">
-                                <col width="11%">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>구분</th>
-                                    <th>진행율</th>
-                                    <th>원고 수급률</th>
-                                    <th>SB 확정률</th>
-                                    <th>촬영</th>
-                                    <th>개발물 수급률</th>
-                                    <th>자문</th>
-                                    <th>개발물 확정률</th>
-                                    <th>강의노트 확정률</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="ac">상태</td>
-                                    <td><span class="proccess-color-1"></span></td>
-                                    <td><span class="proccess-color-1"></span></td>
-                                    <td><span class="proccess-color-1"></span></td>
-                                    <td><span class="proccess-color-2"></span></td>
-                                    <td><span class="proccess-color-3"></span></td>
-                                    <td><span class="proccess-color-4"></span></td>
-                                    <td><span class="proccess-color-1"></span></td>
-                                    <td><span class="proccess-color-5"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">진척</td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>0%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="allbutton subtit_btn cf">
-                            <div class="headingBox subBox tx-left">
-                                <h4 id="btn01"><i></i>회별 세부 진행율</h4>
+                        <div class="allbutton cf">
+                            <div class="btnArea tx-left">
+                                <button type="button" class="btnBasic"><img src="../asset/img/Lookup.png">조회</button>
                             </div>
                         </div>
-                        <table class="table_normal">
-                            <colgroup>
-                                <col>
-                                <col>
-                            </colgroup>
+                        <div class="searchBox" id="searchDiv">
+                            <ul>
+                                <li class="list1">
+                                    <label class="control-label" style="width:102px">제작상태</label><!-- 제작상태  -->
+                                    <div class="selectBox">
+                                        <select id="p_srch_useyn" name="p_srch_useyn">
+                                            <option value="">- 전체 -</option>
+                                            <option value="Y">사용</option>
+                                            <option value="N">미사용</option>
+                                        </select>
+                                        <div class="select-button"></div>
+                                    </div>
+                                </li>
+                                <li class="list1">
+                                    <label class="control-label" style="width:102px">제작구분</label><!-- 제작구분 -->
+                                    <div class="selectBox">
+                                        <select id="p_srch_useyn" name="p_srch_useyn">
+                                            <option value="">- 전체 -</option>
+                                            <option value="Y">사용</option>
+                                            <option value="N">미사용</option>
+                                        </select>
+                                        <div class="select-button"></div>
+                                    </div>
+                                </li>
+                                <li class="list2">
+                                    <label class="control-label" style="width:102px">제작주체</label>
+                                    <div class="selectBox">
+                                        <select id="p_srch_useyn" name="p_srch_useyn">
+                                            <option value="">- 전체 -</option>
+                                            <option value="Y">사용</option>
+                                            <option value="N">미사용</option>
+                                        </select>
+                                        <div class="select-button"></div>
+                                    </div>
+                                </li>
+                                <li class="list2">
+                                    <label class="control-label" style="width:102px">제작연도</label><!-- 제작연도 -->
+                                    <div class="selectBox">
+                                        <input type="text" class="form-control basic" id="userNm" disabled="true" th:value="${dto.getName()}">	
+                                        <div class="select-button"></div>
+                                    </div>
+                                </li>
+                                <li class="list3">
+                                    <label class="control-label" style="width:102px">사업명</label><!-- 사업명 -->
+                                    <div class="selectBox">
+                                        <select id="p_srch_useyn" name="p_srch_useyn">
+                                            <option value="">- 전체 -</option>
+                                            <option value="Y">사용</option>
+                                            <option value="N">미사용</option>
+                                        </select>
+                                        <div class="select-button"></div>
+                                    </div>
+                                </li>
+                                <li class="list4">
+                                    <label class="control-label" style="width:102px">CP사명</label><!-- CP사명  -->
+                                    <input type="text" class="form-control basic" id="userNm" disabled="true"
+                                        th:value="${dto.getName()}">
+                                </li>
+                                <li class="list5">
+                                    <label class="control-label" style="width:102px">과정명</label><!-- 과정명  -->
+                                    <input type="text" class="form-control basic" id="userNm" disabled="true"
+                                        th:value="${dto.getName()}">
+                                </li>
+                                <li class="list6">
+                                    <label class="control-label" style="width:102px">내용전문가</label><!-- 내용전문가  -->
+                                    <input type="text" class="form-control basic" id="userNm" disabled="true"
+                                        th:value="${dto.getName()}">
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="tab sub_tab">
+							<li id="" class=""><a href="javascript:goTab('03','crs');">총괄</a></li><!-- 총괄 -->
+							<li id="" class="active"><a href="javascript:goTab('02','crs');">개발</a></li> <!-- 개발 -->
+							<li id="" class=""><a href="javascript:goTab('02','crs');">운영</a></li> <!-- 운영 -->
+							<li id="" class=""><a href="javascript:goTab('02','crs');">사업별</a></li> <!-- 사업별 -->
+						</ul>
+                        <div class="allbutton subtit_btn cf">
+                            <div class="headingBox subBox tx-left">
+                                <h4 id="btn01"><i></i>현황</h4>
+                                <div class="countBox" id="view_list_cnt"><strong>10</strong>건</div>
+                            </div>
+                            <div class="btnArea tx-right subbtn">
+                                <button type="button" class="btnBasic btnDisabled"><img src="../asset/img/Add.png">과목 추가</button>
+                                <button type="button" class="btnBasic btnDisabled"><img src="../asset/img/Add.png">사업 추가</button>
+                                <button type="button" class="btnBasic btnicon"><img src="../asset/img/excel.png"
+                                        class="excel"></button>
+                            </div>
+                        </div>
+                        <table class="table_normal mt0">
                             <thead>
-                                <tr class="mobH">
-                                    <th style="width: 35px;" rowspan="2">회차</th>
-                                    <th rowspan="2">상태</th><!-- 상태 -->
-                                    <th rowspan="2">진행율</th><!-- 진행율 -->
-                                    <th rowspan="2">원고</th><!-- 원고 -->
-                                    <th colspan="4">SB</th>
-                                    <th rowspan="2">촬영</th><!-- 촬영 -->
-                                    <th colspan="4">개발물</th>
-                                    <th colspan="3">강의노트</th>
-                                </tr>
-                                <tr class="mobH">
-                                    <th>제출</th><!-- 제출 -->
-                                    <th>검수</th><!-- 검수 -->
-                                    <th>수정반영</th><!-- 수정반영 -->
-                                    <th>확정</th><!-- 확정 -->
-                                    <th>제출</th><!-- 제출 -->
-                                    <th>검수</th><!-- 검수 -->
-                                    <th>수정반영</th><!-- 수정반영 -->
-                                    <th>확정</th><!-- 확정 -->
-                                    <th>제출</th><!-- 제출 -->
-                                    <th>검수</th><!-- 검수 -->
-                                    <th>확정</th><!-- 확정 -->
+                                    <th style="width: 35px;">NO</th>
+                                    <!-- 분류 -->
+                                    <th>상태</th>
+                                    <th>사업명</th>
+                                    <th>CP사명</th>
+                                    <th>과정명</th>
+                                    <th>제작기간</th>
+                                    <th>진행율</th>
+                                    <th>제작구분</th>
+                                    <th>제작주체</th>
+                                    <th>담당자</th>
                                 </tr>
                             </thead>
                             <tbody id="listForm">
                                 <tr>
-                                    <td class="ac">1</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
+                                    <td class="ac">10</td>
+                                    <td>영상콘텐츠</td>
+                                    <td>사업명</td>
+                                    <td>CP사명</td>
+                                    <td>과목명이 노출됩니다.</td>
+                                    <td>2022.01.01 ~ 2022.1231</td>
                                     <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">2</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">3</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">4</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">5</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">6</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">7</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">8</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
+                                    <td>신규</td>
+                                    <td>자체</td>
+                                    <td>홍길동</td>
                                 </tr>
                                 <tr>
                                     <td class="ac">9</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
+                                    <td>-</td>
+                                    <td>사업명</td>
+                                    <td>-</td>
+                                    <td>과목명이 노출됩니다.</td>
+                                    <td>2022.01.01 ~ 2022.1231</td>
                                     <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <td class="ac">10</td>
-                                    <td class="ac"><span class="proccess-color-1"></span></td>
-                                    <td>95.8%</td>
-                                    <td>100%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>100.0%</td>
-                                    <td>93.5%</td>
-                                    <td>50%</td>
-                                    <td>100.0%</td>
-                                    <td>0%</td>
+                                    <td>신규</td>
+                                    <td>자체</td>
+                                    <td>홍길동</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- 그리드가 삽입될 DIV -->
                         <div class="allbutton subtit_btn cf">
                             <div class="headingBox subBox tx-left">
-                                <h4 id="btn01"><i></i>그리드 플러그인 넣기</h4>
+                                <h4 id="btn01"><i></i>상세 정보</h4>
                             </div>
                         </div>
-		                <div id="gridHolder"></div>
+                        <table class="table_normal mt0">
+                            <colgroup>
+                                <col width="20%">
+                                <col width="30%">
+                                <col width="20%">
+                                <col width="30%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>과목명</th>
+                                    <td>과목명이 노출됩니다.</td>
+                                    <th>학습콘텐츠(버전)</th>
+                                    <td>
+                                        <div class="selectBox">
+                                            <select id="p_srch_useyn" name="p_srch_useyn">
+                                                <option value="">- 전체 -</option>
+                                                <option value="Y">사용</option>
+                                                <option value="N">미사용</option>
+                                            </select>
+                                            <div class="select-button"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>과목코드</th>
+                                    <td>A202life_15110139</td>
+                                    <th>CP사</th>
+                                    <td>CP사명</td>
+                                </tr>
+                                <tr>
+                                    <th>담당자</th>
+                                    <td>A202life_15110139</td>
+                                    <th>CP사 담당자</th>
+                                    <td>담당자명 / 000-000-0000</td>
+                                </tr>
+                                <tr>
+                                    <th>상태</th>
+                                    <td>운영</td>
+                                    <th>스마트 혼합 훈련 사용 여부</th>
+                                    <td>Y</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="tab sub_tab">
+							<li id="tabMenu01" class="active"><a href="javascript:goTab('03','crs');">전체 공정율</a></li>
+							<li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">콘텐츠정보</a></li>
+							<li id="tabMenu03" class=""><a href="javascript:goTab('02','crs');">사업정보</a></li>
+							<li id="tabMenu04" class=""><a href="javascript:goTab('02','crs');">교수설계 관리</a></li>
+							<li id="tabMenu05" class=""><a href="javascript:goTab('02','crs');">강의계획서</a></li>
+							<li id="tabMenu06" class=""><a href="javascript:goTab('02','crs');">콘텐츠 구성</a></li>
+							<li id="tabMenu07" class=""><a href="javascript:goTab('02','crs');">내용전문가</a></li>
+							<li id="tabMenu08" class=""><a href="javascript:goTab('02','crs');">프로토 타입</a></li>
+							<li id="tabMenu09" class=""><a href="javascript:goTab('02','crs');">양산 콘텐츠</a></li>
+							<li id="tabMenu10" class=""><a href="javascript:goTab('02','crs');">통합 검수</a></li>
+							<li id="tabMenu11" class=""><a href="javascript:goTab('02','crs');">최종 포럼</a></li>
+							<li id="tabMenu12" class=""><a href="javascript:goTab('02','crs');">공공 콘텐츠 심사</a></li>
+							<li id="tabMenu13" class=""><a href="javascript:goTab('02','crs');">이력관리</a></li>
+						</ul>
+                        <div class="" style="margin-bottom: 0; border:0;">
+                            <div style="padding:100px 20px; text-align:center; font-weight:bold">선택된 탭의 정보가 노출됩니다.</div>
+                        </div>
                     </div>
                 </div>
             </div>

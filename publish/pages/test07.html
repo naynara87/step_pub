@@ -1,0 +1,863 @@
+<html lang="kr"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS-STA-001-05</title>
+    <!-- Start css -->
+    <link rel="stylesheet" type="text/css" href="../asset/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../asset/css/main.css">
+	<style>
+		a.link{
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+		.subRow.show{
+			display: table-row;
+		}
+		.subRow{
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header id="header" class="sub">
+
+            <div class="component1">
+                <div class="logo">
+                    <h1><a href="https://olei.step.or.kr/sta"><img src="../asset/img/main_toplogo.png"></a></h1>
+                </div>
+                <div class="userInfo">
+                    <button class="btnBasic btnLogout" onclick="logout()"><img src="../asset/img/logout.png">로그아웃</button>
+                    <button class="btnBasic btnInner" onclick="fnUsrInfo();"><img src="../asset/img/myinfo.png">내 정보
+                        수정</button>
+
+                </div>
+                <div class="topMenu">
+                    <ul class="gnb">
+                        <li>
+                            <a href="#">대메뉴1</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴2</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴3</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴4</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴5</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴6</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴7</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴8</a>
+                        </li>
+                        <li>
+                            <a href="#">대메뉴9</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <div class="leftmenu">
+                <ul class="nav nav-search">
+                    <li class="tab-link current" data-tab="tab-1"></li>
+                    <li class="tab-link favorite" data-tab="tab-2"></li>
+                    <li class="searchform">
+                        <input type="search" id="p_srch_text" name="p_srch_text" value="" onkeydown="if(event.keyCode == '13'){jsSearch()}" placeholder="검색어 입력">
+                        <button type="button" id="btn_headerSearch" class="btn_sch">검색</button>
+
+                    </li>
+                    <li class="tab-link push"></li>
+                </ul>
+                <ul id="tab-1" class="gnb tab-content current">
+
+
+                    <li>
+                        <a href="javascript:void(0)" class="m">
+                            게시판관리</a>
+                        <ul class="twoDepth topNavi_2dth children" id="topNavi1;">
+                            <li>
+                                <a href="javascript:void(0)" class="active">
+                                    VOC 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/edu/inqryRepMgntList.do','1349','Y')" class="active">
+                                            담당자 관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/edu/inqryAnswMgntList.do','1372','Y')">
+                                            1:1문의 답변관리</a>
+                                        <ul class="fourDepth"></ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/edu/jobAdviceAnswMgntList.do','11527','Y')">
+                                            취업상담 관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    공지사항 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/comBbs/comBbsNotiMgnt.do','13324','Y')">
+                                            통합 공지사항</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/bbs/bbsPstMgnt.do?p_bbs_id=1','2963','Y')">
+                                            일반 공지사항</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/bbs/bbsPstMgnt.do?p_bbs_id=25','11896','Y')">
+                                            강사 공지사항</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/bbs/bbsPstMgnt.do?p_bbs_id=39','11916','Y')">
+                                    자료실 관리</a>
+                                <ul class="threeDepth">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    FAQ 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/faq/faqCmnMgnt.do','764','Y')">
+                                            FAQ 관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/faq/faqCmnCategoryRegistForm.do','727','Y')">
+                                            FAQ 카테고리 관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/comInqry/comAutoInqryMgnt.do','13387','Y')">
+                                    저작도구 사용 신청</a>
+                                <ul class="threeDepth">
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="m">
+                            사용자관리</a>
+                        <ul class="twoDepth topNavi_2dth children" id="topNavi2" style="display: none;">
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/usr/compUsrManageList.do','278','Y')">
+                                    계정관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    기관관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/pot/comp/compManageList.do','1901','Y')">
+                                            -기관관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    강사관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/potal/tutor/tutorList.do','253','Y')">
+                                            -강사정보관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            -강사평가</a>
+                                        <ul class="fourDepth">
+                                            <li>
+                                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/tutor/noneScoredForm.do','3752','Y')">
+                                                    -미평가현황</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="m">과정관리</a>
+                        <ul class="twoDepth topNavi_2dth children" id="topNavi3" style="display: none;">
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/edugrp/edugrpMngt.do','852','Y')">
+                                    교육그룹관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crcctgry/crcCtgryRegistForm.do','859','Y')">
+                                    과정카테고리관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    과정설문 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/survey/surveyPaperForm.do?p_survey_type=crs','409','Y')">
+                                            -과정설문 템플릿관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/survey/surveyOperateForm.do?p_survey_type=crs','488','Y')">
+                                            -과정설문 운영관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduCertiForm/eduCertiForm.do','11619','Y')">
+                                    수료증 양식관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    과정등록</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduRegMgntForm.do?p_crstype=ON','851','Y')">
+                                            -원격훈련</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduRegMgntForm.do?p_crstype=OFF','10640','Y')">
+                                            -집체훈련</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduRegMgntForm.do?p_crstype=PK','11361','Y')">
+                                            -혼합훈련</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    과정승인 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduApproval/eduInfoVerifyMgntForm.do','3127','N')">
+                                            -과정정보검증</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduApproval/eduApprovalMgntForm.do','3129','Y')">
+                                            -과정승인관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lcms/lcmsCntntsMockList.do','2270','Y')">
+                                    이러닝 컨텐츠 보기</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="m">
+                            운영관리</a>
+                        <ul class="twoDepth topNavi_2dth children" id="topNavi4" style="display: none;">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    차수관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsseq/crsSeqCntViewForm.do','8015','Y')">
+                                            -과정차수관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduEvltnActCrsseqMgnt/eduEvltnActCrsseqMgntForm.do','2184','Y')">
+                                            -학습평가관리(차수)</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/student/classAssign.do','2248','Y')">
+                                            -교강사배정(분반)</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    수강신청관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsReg/crsRegEduSeqMgntForm.do','3749','Y')">
+                                            -수강신청관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsRegDrop/crsRegDropMgntForm.do','3997','Y')">
+                                            -수강반려관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/testIdReg/testIdRegMgntForm.do','4002','Y')">
+                                            -청강생관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    입과관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsseq/etrCrsSeqMgntForm.do','10874','Y')">
+                                            -과정별 입과관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsseq/etrCrsSeqPrsnOfflineMgntForm.do?p_crs_frm_cd=OFF','5392','Y')">
+                                            -개인별 입과관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    학습현황</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduStatus/crsSeqStatusForm.do','10948','Y')">
+                                            -과정별 학습현황</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduStatus/crsEduPrsnStatusForm.do','5333','Y')">
+                                            -개인별 학습현황</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    수료관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/completionMng/completionCrsSeqForm.do','5372','Y')">
+                                            -수료관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    배송관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/dlvyMgnt/dlvyStatusCrsSeqForm.do?p_dlvy_type=S','10920','Y')">
+                                            -배송관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/psnInfoMgnt/psnInfoAccesRsnForm.do','12506','Y')">
+                                    개인정보 접근 사유</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/payment/paymentFormList.do','12996','Y')">
+                                    훈련비 결제 관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="m">
+                            학습활동관리</a>
+                        <ul class="twoDepth topNavi_2dth children" id="topNavi5" style="display: none;">
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/cms/prgrt/progressMgntForm.do?p_crs_frm_cd=ON','1284','Y')">
+                                    원격훈련 진도율 관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsseq/crsSeqCertiListForm.do','12056','Y')">
+                                    본인인증 이력 조회</a>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/atndncMgnt/atndncMgntForm.do','12662','Y')">
+                                    집체훈련 출결관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    평가관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/evltnScrng/evltnScrngForm.do','1866','Y')">
+                                            -평가채점관리</a>
+                                        <ul class="fourDepth subchildren">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            -재채점관리</a>
+                                        <ul class="fourDepth">
+                                            <li>
+                                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/remarkQst/remarkQstMgntForm.do','1276','Y')">
+                                                    -재채점문제관리</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/remark/remarkForm.do','476','Y')">
+                                                    -재채점</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/retake/retakeForm.do','474','Y')">
+                                            -재응시관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/evltnReportScrg/evltnReportScrngMgntForm.do','477','Y')">
+                                    과제채점관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/calling/callingMgntForm.do','3642','Y')">
+                                    소명서관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    모사답안확정명단</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/answer/answerForm.do?p_mosa=report','5529','Y')">
+                                            -모사답안 확정명단(과제)</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/eduStudentSprt/eduStudentSprtMgntForm.do','892','Y')">
+                                    과정 게시판 관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/crsQna/crsQnaMgntForm.do','905','Y')">
+                                    과정 QnA 관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    과정설문 운영관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/survey/surveyResultForm.do?p_survey_type=crs','402','Y')">
+                                            -과정설문 결과관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/teamProject/teamProjectMgntForm.do','12826','Y')">
+                                    팀프로젝트 관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/liveSeminar/selectLiveSeminarMngt.do','12840','Y')">
+                                    라이브세미나 관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/debate/crsseqDebateMgntForm.do','2934','Y')">
+                                    토론운영관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/smsMailStatus/smsMailStatusForm.do','909','Y')">
+                                    메일/SMS 발송관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/lms/pushNotifi/pushNotifiMngtForm.do','7920','Y')">
+                                    푸시알림관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="m">
+                            홈페이지관리</a>
+                        <ul class="twoDepth topNavi_2dth children" id="topNavi6" style="display: none;">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    메인 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/service/serviceCenterForm.do','11522','Y')">
+                                            -고객센터 정보관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/refSite/refSiteMgntForm.do','11873','Y')">
+                                            -연관사이트관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/homepage/bannerMngtForm.do','6510','Y')">
+                                            -배너관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    팝업 공지사항</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/popnotice/popNoticeTmplMgntListForm.do','1003','Y')">
+                                            -팝업공지사항 템플릿</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/popnotice/popNoticeHmpgGrpMgntListForm.do','1010','Y')">
+                                            -팝업공지사항</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    홈페이지 설문 관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/survey/surveyPaperForm.do?p_survey_type=hmpg','2073','Y')">
+                                            -설문 템플릿관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/survey/surveyOperateForm.do?p_survey_type=hmpg','2089','Y')">
+                                            -설문운영관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/lms/survey/surveyResultForm.do?p_survey_type=hmpg','2121','Y')">
+                                            -설문 결과관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/terms/termsMgnt.do','10960','Y')">
+                                    약관관리</a>
+                                <ul class="threeDepth subchildren">
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    페이지관리</a>
+                                <ul class="threeDepth subchildren">
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/ucntnt/ucntntMgnt.do','664','Y')">
+                                            -페이지관리</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:goMenu('https://olei.step.or.kr/sta/mngs/portal/drctns/drctnsForm.do','11949','Y')">
+                                            -찾아오시는 길</a>
+                                        <ul class="fourDepth">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="nav-footer">
+                    <li class="tab-link transform"></li>
+                    <li class="tab-link set"></li>
+
+                </ul>
+                <!-- //gnb -->
+            </div>
+            <div id="main">
+                <div class="contentsWrap">
+
+                    <ul class="tab main_tab">
+
+                        <li id="tabMenu03" class="active"><a href="javascript:goTab('03','crs');">Active Tab<img src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img src="../asset/img/cencel_tab.png"></a></li>
+                        <li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">Active Tab<img src="../asset/img/cencel_tab.png"></a></li>
+                        <div class="tab_button tx-right">
+                            <a href="#" class="tab_cencel"><img src="../asset/img/tab_cencel.png"></a>
+                            <a href="#" class="tab_hiding"><img src="../asset/img/tab_hiding.png"></a>
+                        </div>
+
+                    </ul>
+
+                    <div class="contentsInner">
+                        
+                        <ul class="tab sub_tab">
+							<li id="tabMenu01" class=""><a href="javascript:goTab('03','crs');">콘텐츠 정보</a></li><!-- 콘텐츠 정보 -->
+							<li id="tabMenu02" class=""><a href="javascript:goTab('02','crs');">사용 정보</a></li> <!-- 사용 정보 -->
+							<li id="tabMenu03" class=""><a href="javascript:goTab('02','crs');">강의계획서</a></li> <!-- 강의계획서 -->
+							<li id="tabMenu04" class="active"><a href="javascript:goTab('02','crs');">콘텐츠 구성</a></li> <!-- 콘텐츠 구성 -->
+							<li id="tabMenu05" class=""><a href="javascript:goTab('02','crs');">문제은행</a></li> <!-- 문제은행 -->
+							<li id="tabMenu06" class=""><a href="javascript:goTab('02','crs');">콘텐츠 평가</a></li> <!-- 콘텐츠 평가 -->
+							<li id="tabMenu07" class=""><a href="javascript:goTab('02','crs');">오류신고</a></li> <!-- 오류신고 -->
+						</ul>
+                        <div class="allbutton subtit_btn cf">
+                            <div class="headingBox subBox tx-left">
+                                <h4 id="btn01"><i></i>상세 정보</h4>
+                            </div>
+                            <div class="btnArea tx-right subbtn">
+                                <button type="button" class="btnBasic btnicon">개정이력</button>
+                                <button type="button" class="btnBasic"><img src="../asset/img/opinion.png">편집</button>
+                                <button type="button" class="btnBasic btnicon"><img src="../asset/img/excel.png" class="excel"></button>
+                                <button type="button" class="btnBasic btnicon">반려</button>
+                                <button type="button" class="btnBasic btnicon">승인</button>
+                            </div>
+                        </div>
+                        <table class="table_normal mt0">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col>
+                                <col width="100px">
+                                <col width="100px">
+                                <col width="100px">
+                                <co>
+                                <col>
+                                <col width="100px">
+                            </colgroup>
+                            <thead id="listTh">
+                                <tr class="mobH">
+                                    <th style="width: 35px;">NO</th>
+                                    <th class="ac">회차</th><!-- 회차 -->
+                                    <th class="ac">페이지수</th><!-- 페이지수 -->
+                                    <th class="ac">강의노트</th><!-- 강의노트 -->
+                                    <th class="ac">미리보기</th><!-- 미리보기 -->
+                                    <th class="ac">다운로드</th><!-- 다운로드 -->
+                                    <th class="ac">게시</th><!-- 게시 -->
+                                    <th class="ac">최근 수정일시</th><!-- 최근 수정일시 -->
+                                    <th class="ac">펼처보기</th><!-- 펼처보기 -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="parentRow">
+                                    <td>10</td>
+                                    <td class="ac">차량 번호판 인식을 위한 기술 이론과정 소개</td>
+                                    <td>6</td>
+                                    <td><a type="button" class="link">확인</a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link">확인</a></td>
+                                    <td><input role="checkbox" id="cb_ucntntMgntList" class="cbox" type="checkbox" checked="checked"></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td><a href="#"  class="link" data-toggle="true" data-target=".dd-2depts-01">펼쳐보기</a></td>
+                                </tr>
+								<tr class="subRow dd-2depts-01">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="subRow dd-2depts-01">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="subRow dd-2depts-01">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="subRow dd-2depts-01">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="parentRow">
+                                    <td>9</td>
+                                    <td class="ac">차량 번호판 인식을 위한 기술 이론과정 소개</td>
+                                    <td>6</td>
+                                    <td><a type="button" class="link">확인</a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link">확인</a></td>
+                                    <td><input role="checkbox" id="cb_ucntntMgntList" class="cbox" type="checkbox" checked="checked"></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td><a href="#" class="link" data-toggle="true" data-target=".dd-2depts-02">펼쳐보기</a></td>
+                                </tr>
+								<tr class="subRow dd-2depts-02">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="subRow dd-2depts-02">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="subRow dd-2depts-02">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+								<tr class="subRow dd-2depts-02">
+                                    <td></td>
+                                    <td class="ac">1. INTRO</td>
+                                    <td>1</td>
+                                    <td><a type="button" class="link"></a></td>
+                                    <td><a type="button" class="link">확인</a></td>
+									<td><a type="button" class="link"></a></td>
+                                    <td></td>
+                                    <td>2022.01.01 00:00:00</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		var listOpenButton =  $('[data-toggle="true"]');
+        listOpenButton.click(function(e){
+            $(this).text(($(this).text() == '펼처보기') ? '접기' : '펼처보기');
+            var trToggle = $(this).data("target");
+            console.log(trToggle);
+            $(trToggle).toggleClass('show');
+        });
+
+	</script>
+</body>
+</html>

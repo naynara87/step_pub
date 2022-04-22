@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개발관리-과정추가-과정및사업매칭</title>
+    <!-- Start css -->
+    <link rel="stylesheet" type="text/css" href="../asset/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../asset/css/main.css">
+    <style>
+        .control-label {
+            text-align: right;
+            width: 16.66666667%;
+            margin-right: 5px;
+            margin-bottom: 0;
+            line-height: 18px;
+        }
+        .proccess-color-1{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: green;
+            border:1px solid green;
+            border-radius: 10px;
+        }
+        .proccess-color-2{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: blue;
+            border: 1px solid blue;
+            border-radius: 10px;
+        }
+        .proccess-color-3{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: orange;
+            border: 1px solid orange;
+            border-radius: 10px;
+        }
+        .proccess-color-4{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: red;
+            border: 1px solid red;
+            border-radius: 10px;
+        }
+        .proccess-color-5{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgb(190, 190, 190);
+            border-radius: 10px;
+        }
+    </style>
+    <!-- rMateGridH5 CSS -->
+	<link rel="stylesheet" type="text/css" href="../asset/js/rMateGridH5/Assets/rMateH5.css" />
+	<!-- rMateGridH5 라이센스 -->
+	<script type="text/javascript" src="../asset/js/LicenseKey/rMateGridH5License.js"></script>
+	<!-- rMateGridH5 라이브러리 -->
+	<script type="text/javascript" src="../asset/js/rMateGridH5/JS/rMateGridH5.js"></script>
+    <!-- 샘플 작동을 위한 css와 js -->
+    <script type="text/javascript" src="./Web/JS/util.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Web/rMateGridH5Sample.css" />
+    <script type="text/javascript">
+// ----------------------- 그리드 설정 시작 -------------------------------------
+
+// rMateGridH5에서 그리드 생성 준비가 완료될 경우 호출할 함수를 지정합니다.
+var jsVars = "rMateOnLoadCallFunction=gridReadyHandler";
+
+// 데이터 방식이 XML 방식일 경우 dataType을 설정합니다.
+jsVars += "&dataType=xml";
+
+// rMateDataGrid 를 생성합니다.
+// 파라메터 (순서대로)
+//  1. 그리드의 id ( 임의로 지정하십시오. )
+//  2. 그리드가 위치할 div 의 id (즉, 그리드의 부모 div 의 id 입니다.)
+//  3. 그리드 생성 시 필요한 환경 변수들의 묶음인 jsVars
+//  4. 그리드의 가로 사이즈 (생략 가능, 생략 시 100%)
+//  5. 그리드의 세로 사이즈 (생략 가능, 생략 시 100%)
+rMateGridH5.create("grid1", "gridHolder", jsVars, "100%", "100%");
+
+// 그리드의 속성인 rMateOnLoadCallFunction 으로 설정된 함수.
+// rMate 그리드의 준비가 완료된 경우 이 함수가 호출됩니다.
+// 이 함수를 통해 그리드에 레이아웃과 데이터를 삽입합니다.
+// 파라메터 : id - rMateGridH5.create() 사용 시 사용자가 지정한 id 입니다.
+function gridReadyHandler(id) {
+	// rMateGrid 관련 객체
+	gridApp = document.getElementById(id);	// 그리드를 포함하는 div 객체
+	gridRoot = gridApp.getRoot();	// 데이터와 그리드를 포함하는 객체
+
+	gridApp.setLayout(layoutStr);
+	gridApp.setDataURLEx(gridDataURL);
+
+	var layoutCompleteHandler = function(event) {
+		dataGrid = gridRoot.getDataGrid();	// 그리드 객체
+	}
+	gridRoot.addEventListener("layoutComplete", layoutCompleteHandler);
+}
+
+var gridApp, gridRoot, dataGrid;
+
+// 접힌 행을 깊이로 열기
+// depth : 깊이, 0은 최상위
+function expandLevel(depth) {
+	dataGrid.expandLevel(depth);
+}
+
+// 접힌 행 모두 열기
+function expandAll() {
+	dataGrid.expandAll();
+}
+
+// 접힌 행 모두 닫기
+function collapseAll() {
+	dataGrid.setDisplayItemsExpanded(false);
+	dataGrid.collapseAll();
+}
+
+//----------------------- 그리드 설정 끝 -----------------------
+
+var layoutStr =
+'<rMateGrid>\
+	<NumberFormatter id="numfmt" useThousandsSeparator="true"/>\
+	<PercentFormatter id="percfmt" useThousandsSeparator="true"/>\
+	<DataGrid id="dg1" displayItemsExpanded="false" horizontalScrollPolicy="auto" verticalAlign="middle" sortableColumns="false" showDataTips="true" headerPaddingTop="5" headerPaddingBottom="6">\
+<!--\n\
+displayItemsExpanded 계층형 자료를 모두 펼친후에 보여줄지 여부 조정 (true,false중 택일, 기본 false)\n\
+treeColumn 계층형 트리가 표현될 컬럼을 지정합니다. (기본은 첫번째 컬럼)\n\
+defaultLeafIcon 계층형 노드의 말단 아이콘 (없애고자 할 경우 null)\n\
+disclosureClosedIcon 계층형 노드를 닫기 위한 버튼 아이콘 (Plus, FolderClosed, Arrow중 택일, 기본 Arrow, 없애고자 할 경우 null)\n\
+disclosureOpenIcon 계층형 노드를 열기 위한 버튼 아이콘 (Minus, FolderOpen, DownArrow중 택일, 기본 DownArrow, 없애고자 할 경우 null)\n\
+displayDisclosureIcon 계층형의 노드를 열거나 닫기위한 아이콘을 표시할 지 여부 (true,false중 택일, 기본 true)\n\
+folderClosedIcon 계층형 노드가 닫혔을 경우 표시되는 아이콘 (Plus, FolderClosed, Arrow중 택일, 기본 FolderClosed, 없애고자 할 경우 null)\n\
+folderOpenIcon 계층형 노드가 열렸을 경우 표시되는 아이콘 (Minus, FolderOpen, DownArrow중 택일, 기본 FolderOpen, 없애고자 할 경우 null)\n\
+\n\
+XML의 attribute로 있는 자료를 필드에 넣을 경우에는 attribute명 앞에 @를 붙여서 넣어줍니다\n\
+-->\
+		<groupedColumns>\
+			<DataGridColumn id="dg1col1" dataField="@no" textAlign="center" headerText="NO"/>\
+			<DataGridColumn id="dg1col2" dataField="@title" textAlign="center" headerText="회차" width="300"/>\
+			<DataGridColumn dataField="@page" textAlign="center" headerText="페이지수"/>\
+			<DataGridColumn dataField="@note" textAlign="center" headerText="강의노트"/>\
+			<DataGridColumn dataField="@preview" textAlign="center" headerText="미리보기"/>\
+			<DataGridColumn dataField="@download" textAlign="center" headerText="다운로드"/>\
+			<DataGridColumn dataField="@delete" textAlign="center" headerText="삭제"/>\
+			<DataGridColumn dataField="@view" textAlign="center" headerText="게시"/>\
+			<DataGridColumn dataField="@update" textAlign="center" headerText="최근수정일시"/>\
+			<DataGridColumn dataField="@folder" textAlign="center" headerText="펼처보기"/>\
+		</groupedColumns>\
+	</DataGrid>\
+</rMateGrid>\
+';
+
+
+var gridDataURL = "./Data/DataOneDepthRevenuesHierachy.xml"
+	</script>
+</head>
+
+<body>
+    <div style="padding: 50px">
+        <div id="gridHolder"></div>
+    </div>
+</body>
+
+</html>
