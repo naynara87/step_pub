@@ -852,7 +852,7 @@
 	<script>
 		var listOpenButton =  $('[data-toggle="true"]');
         listOpenButton.click(function(e){
-            $(this).text(($(this).text() == '펼처보기') ? '접기' : '펼처보기');
+            $(this).text(($(this).text() == '접기') ? '펼쳐보기' : '접기');
             var trToggle = $(this).data("target");
             console.log(trToggle);
             $(trToggle).toggleClass('show');
